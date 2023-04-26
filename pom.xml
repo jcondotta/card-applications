@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.blitzar</groupId>
-	<artifactId>cards</artifactId>
+	<artifactId>card-applications</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>cards</name>
 	<description>Cards Management</description>

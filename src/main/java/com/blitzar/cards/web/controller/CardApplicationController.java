@@ -1,6 +1,6 @@
 package com.blitzar.cards.web.controller;
 
-import com.blitzar.cards.events.CardApplicationEvent;
+import com.blitzar.cards.service.events.CardApplicationEvent;
 import com.blitzar.cards.service.CardApplicationEventProducer;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

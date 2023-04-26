@@ -1,14 +1,16 @@
 package com.blitzar.cards;
 
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
-@SpringBootApplication
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 @ConfigurationPropertiesScan
-public class CardsApplication {
+public class CardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CardsApplication.class, args);
+		SpringApplication.run(CardApplication.class, args);
 	}
 }

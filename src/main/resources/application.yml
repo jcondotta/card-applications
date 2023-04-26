@@ -3,23 +3,7 @@ server:
 
 spring:
   application:
-    name: card-management
-
-  datasource:
-    url: jdbc:mysql://localhost:3206/cards_db
-    username: admin
-    password: sB6mbtzNHmCQI4eN4yLo
-    driverClassName: com.mysql.cj.jdbc.Driver
-
-  flyway:
-    enabled: true
-    url: ${spring.datasource.url}
-    user: ${spring.datasource.username}
-    password: ${spring.datasource.password}
-
-  jpa:
-    hibernate:
-      ddl-auto: none
+    name: card-applications
 
   kafka:
     bootstrap-servers: localhost:9093, localhost:9094, localhost:9095

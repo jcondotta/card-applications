@@ -9,7 +9,7 @@ import org.testcontainers.lifecycle.Startables;
 @Testcontainers
 public interface KafkaTestContainer {
 
-    KafkaContainer KAFKA_CONTAINER = new KafkaContainer();
+    KafkaContainer KAFKA_CONTAINER = new KafkaContainer().withReuse(true);
 
     @DynamicPropertySource
     static void registerKafkaProperties(DynamicPropertyRegistry registry) {

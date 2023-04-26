@@ -1,7 +1,7 @@
 package com.blitzar.cards.service;
 
 import com.blitzar.cards.config.kafka.KafkaApplicationProperties;
-import com.blitzar.cards.events.CardApplicationEvent;
+import com.blitzar.cards.service.events.CardApplicationEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
