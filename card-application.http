@@ -4,5 +4,5 @@ Content-Type: application/json
 Accept-Language: es-ES
 
 {
-  "cardholderName": "Noname Customer"
+  "cardholderName": "Customer Name"
 }
