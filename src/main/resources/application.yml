@@ -23,4 +23,3 @@ spring:
 app:
   kafka:
     card-application-topic: card-application
-    card-application-group-id: card-application
