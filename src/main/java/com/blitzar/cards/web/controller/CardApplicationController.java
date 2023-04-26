@@ -1,7 +1,7 @@
 package com.blitzar.cards.web.controller;
 
-import com.blitzar.cards.service.events.CardApplicationEvent;
 import com.blitzar.cards.service.CardApplicationEventProducer;
+import com.blitzar.cards.service.events.CardApplicationEvent;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -26,7 +26,7 @@ public class CardApplicationController {
         this.messageSource = messageSource;
     }
 
-    @ResponseStatus(HttpStatus.OK)
+    @ResponseStatus(HttpStatus.ACCEPTED)
     @PostMapping(value = "/application", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> registerCardApplication(@Valid @RequestBody CardApplicationEvent cardApplicationEvent, WebRequest request){
         cardApplicationEventProducer.handle(cardApplicationEvent);
