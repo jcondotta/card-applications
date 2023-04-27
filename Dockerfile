@@ -1,4 +1,4 @@
-FROM 8u372-alpine3.17-jre
+FROM amazoncorretto:17
 
 EXPOSE 8080
 
