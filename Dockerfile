@@ -1,5 +1,3 @@
-FROM amazoncorretto:17.0.7-alpine3.17
-WORKDIR /
-ADD card-applications-0.0.1-SNAPSHOT.jar card-applications-0.0.1-SNAPSHOT.jar
-EXPOSE 8080
-CMD java - jar card-applications-0.0.1-SNAPSHOT.jar
+FROM anapsix/alpine-java
+ADD target/card-applications-*.jar /home/myjar.jar
+CMD ["java","-jar","/home/myjar.jar"]
