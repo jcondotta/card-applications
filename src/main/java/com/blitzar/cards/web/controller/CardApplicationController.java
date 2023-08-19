@@ -1,39 +1,33 @@
 package com.blitzar.cards.web.controller;
 
-import com.blitzar.cards.service.CardApplicationEventProducer;
+import com.blitzar.cards.service.CardApplicationService;
 import com.blitzar.cards.service.events.CardApplicationEvent;
-import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
+import io.micronaut.http.HttpResponse;
+import io.micronaut.http.HttpStatus;
+import io.micronaut.http.MediaType;
+import io.micronaut.http.annotation.Body;
+import io.micronaut.http.annotation.Controller;
+import io.micronaut.http.annotation.Post;
+import io.micronaut.http.annotation.Status;
+import io.micronaut.validation.Validated;
+import jakarta.inject.Inject;
 
-import java.util.UUID;
-
-@RestController
-@RequestMapping("/api/v1/cards")
+@Validated
+@Controller(CardAPIConstants.BASE_PATH_API_V1_MAPPING)
 public class CardApplicationController {
 
-    private CardApplicationEventProducer cardApplicationEventProducer;
-    private MessageSource messageSource;
+    private final CardApplicationService cardApplicationService;
 
-    @Autowired
-    public CardApplicationController(CardApplicationEventProducer cardApplicationEventProducer, MessageSource messageSource) {
-        this.cardApplicationEventProducer = cardApplicationEventProducer;
-        this.messageSource = messageSource;
+    @Inject
+    public CardApplicationController(CardApplicationService cardApplicationService) {
+        this.cardApplicationService = cardApplicationService;
     }
 
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    @PostMapping(value = "/application", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> registerCardApplication(@Valid @RequestBody CardApplicationEvent cardApplicationEvent, WebRequest request){
-        cardApplicationEventProducer.handle(cardApplicationEvent);
-        var cardApplicationConfirmationDTO = new CardApplicationConfirmationDTO(UUID.randomUUID().toString(), messageSource.getMessage("card.application.accepted", null, request.getLocale()));
+    @Status(HttpStatus.ACCEPTED)
+    @Post(value = "/application", consumes = MediaType.APPLICATION_JSON)
+    public HttpResponse<?> registerCardApplication(@Body CardApplicationEvent cardApplicationEvent){
+        cardApplicationService.registerApplication(cardApplicationEvent);
 
-        return ResponseEntity.accepted().body(cardApplicationConfirmationDTO);
+        return HttpResponse.accepted().body("Your card application has been accepted and will be processed soon");
     }
-
-    private record CardApplicationConfirmationDTO(String cardApplicationReference, String message){}
 }

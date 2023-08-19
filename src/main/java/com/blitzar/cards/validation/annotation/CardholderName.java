@@ -1,18 +1,17 @@
 package com.blitzar.cards.validation.annotation;
 
-import jakarta.validation.Constraint;
-import jakarta.validation.Payload;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
-
+import javax.validation.Constraint;
+import javax.validation.Payload;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
 import static java.lang.annotation.ElementType.*;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@NotBlank(message = "card.cardholderName.notBlank")
-@Size(max = 21, message = "card.cardholderName.length.limit")
+@NotBlank
+@Size(max = 21)
 @Target(value = { METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(value = RUNTIME)
 @Constraint(validatedBy = {})

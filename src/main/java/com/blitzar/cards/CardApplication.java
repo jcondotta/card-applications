@@ -1,16 +1,11 @@
 package com.blitzar.cards;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
+import io.micronaut.runtime.Micronaut;
 
-@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
-@ConfigurationPropertiesScan
+
 public class CardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CardApplication.class, args);
+		Micronaut.run(CardApplication.class, args);
 	}
 }

@@ -1,25 +1,28 @@
-server:
-  port: 8080
-
-spring:
+micronaut:
   application:
-    name: card-applications
+    name: bank-account-application
+  server:
+    port: 8087
+    locale-resolution:
+      fixed: en_GB
 
-  kafka:
-    bootstrap-servers: localhost:9093, localhost:9094, localhost:9095
-    producer:
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  jms:
+    sqs:
+      enabled: true
 
-  jackson:
-    mapper:
-      accept-case-insensitive-enums: true
+aws:
+  access-key-id: ${AWS_ACCESS_KEY_ID}
+  secret-key: ${AWS_SECRET_ACCESS_KEY}
+  region: ${AWS_DEFAULT_REGION}
+  sqs:
+    endpoint: ${AWS_SQS_ENDPOINT}
 
-  level:
-    root: debug
-    sql: info
-    web: info
+jackson:
+  mapper:
+    accept-case-insensitive-enums: true
 
 app:
-  kafka:
-    card-application-topic: card-application
+  aws:
+    sqs:
+      card-application-queue-name: card-application
+      bank-account-created-queue-name: bank-account-created
